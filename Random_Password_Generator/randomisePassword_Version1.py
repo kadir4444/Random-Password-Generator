@@ -52,9 +52,22 @@ def randomisePassword_Version1():
 
         print(passwrd_str)
 
-    # Next version will have Graphical interface
-    # Future releases will check generated passwords will contain at least a 1 special character and 1 number and 1 letters
-
     except Exception:
         traceback.print_exc()
         print(Exception)
+
+    '''  
+    Next version will have Graphical interface
+    Future releases will check generated passwords will contain at least a 1 special character and 1 number and 1 letters
+    
+    Version 2 - GUI interface will be interoduced allowing users to create passwords and allow them to copy it onto clipboard
+    Version 3 - Advanced GUI interface
+    Version 4 - Password Storage - Allows user to store passwords based on groups
+    Version 4.1 - Users can set or pins favourite passwords
+    Version 4.2 - Stored Passwords will be secured as users need to access it via password
+    Version 4.3 - Sorting feature on stored passwords
+    Version 5 - Reminder to change passwords and not use old passwords
+    Version 5.1 - Make sure passwords are different and reminder to notify that same passwords for multiple apps and sites
+    '''
+
+
