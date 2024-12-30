@@ -52,7 +52,7 @@ def randomisePassword_Version1():
 
         print(passwrd_str)
 
-    except Exception:
+    except (ValueError, RuntimeError, TypeError, NameError):
         traceback.print_exc()
         print(Exception)
 
