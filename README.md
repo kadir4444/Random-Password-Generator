@@ -1,13 +1,14 @@
 # Random-Password-Generator
 
-A simple desktop password generator that will create passwords with characters betweem 8 to 15 characters. The passwords generated will contain numbers, special characters and both upper and lower case alphabet characters.
+A simple desktop password generator that will create passwords with characters between 8 and 15 characters. The passwords generated will contain numbers, special characters and both upper and lower case alphabet characters.
 
 Current Release:
 - Version 1 - Contains the basic features of generating passwords in python terminal.
+- Version 1.1 - Password will verify that generated passwords contains at least a 1 special character and 1 number and 1 letters.
 
 Upcoming features:
-- Version 2 - GUI interface will be interoduced allowing users to create passwords and allow them to copy it onto clipboard
-- Version 3 - Advanced GUI interface
+- Version 2 - GUI interface will be introduced allowing users to create passwords and allow them to copy it onto clipboard
+- Version 3 - Advanced GUI interface features
 - Version 4 - Password Storage - Allows user to store passwords based on groups
 - Version 4.1 - Users can set or pins favourite passwords
 - Version 4.2 - Stored Passwords will be secured as users need to access it via password 
