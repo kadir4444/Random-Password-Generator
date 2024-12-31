@@ -1,4 +1,4 @@
-from Random_Password_Generator.Graphical_UI import createGUI
+from Random_Password_Generator.Graphical_UI import *
 from randomisePassword_Version1 import randomisePassword_Version1
 
 # Main class used to execute password generator classes
