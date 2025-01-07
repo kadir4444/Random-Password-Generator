@@ -2,11 +2,10 @@ import random
 import string
 import tkinter
 import traceback
-from operator import truediv
 from tkinter import *
 from tkinter import messagebox
 
-import tk
+from win32ui import MessageBox
 
 """
 
@@ -38,12 +37,14 @@ def on_focusout(event):
 def check_Min_num(min_val):
     if min_val.isdigit():
         return True
+    messagebox.showerror("Minimum Number field error", "Invalid input entered into field. Please enter valid number.")
     return False
 
 
 def check_Max_num(max_val):
     if max_val.isdigit():
         return True
+    messagebox.showerror("Maximum Number field error", "Invalid input entered into field. Please enter valid number.")
     return False
 
 
@@ -65,30 +66,6 @@ def createGUI():
                               relief="sunken",
                               font=("MS Sans Serif", 20))
     title_lbl.grid(row=0, column=0, padx=0, pady=1, sticky=W)
-
-    """
-    header_frame = tkinter.Frame(root)
-    header_frame.pack()
-
-    p_config_lbl = tkinter.Label(header_frame,
-                                 text="Password Config: ",
-                                 bg="light green",
-                                 borderwidth=5,
-                                 justify="center",
-                                 relief="sunken",
-                                 font=("MS Sans Serif", 15))
-    p_config_lbl.grid(row=0, column=0, padx=0, pady=1, sticky=W)
-
-    header_lbl2 = tkinter.Label(header_frame,
-                                text="-" * 30,
-                                bg="light green",
-                                borderwidth=5,
-                                justify="center",
-                                relief="sunken",
-                                font=("MS Sans Serif", 20))
-    header_lbl2.grid(row=0, column=1, padx=0, pady=1, sticky=W)
-
-    """
 
     content_frame = tkinter.Frame(root)
     content_frame.pack()
@@ -146,9 +123,84 @@ def createGUI():
         min_length = min_txt.get()
         max_length = max_txt.get()
 
-        #if max_length.is
+        """ Character types """
+        ltr_low = list(string.ascii_lowercase)
+        ltr_up = list(string.ascii_uppercase)
+        nums = list(string.digits)
+        sp_chars = list(string.punctuation)
 
-        if not check_Min_num(min_length) and not int(min_length):
+        """ Password Length Parameters """
+        password_len = random.randint(int(min_length), int(max_length))
+        ltr_low_len = len(ltr_low)
+        ltr_up_len = len(ltr_up)
+        nums_len = len(nums)
+        sp_chars_len = len(sp_chars)
+
+        text2 = str(max_length + min_length)
+
+        if check_Max_num(min_length) and check_Max_num(max_length):
+            # pass_txt.insert(0, text2)
+
+            try:
+                passwrd_char_type = random.randint(0, 3)
+                password = []
+
+                print("Array Created.....")
+                print(password)
+
+                print("Password Length: " + str(password_len))
+
+                pswrd_len = str(password_len)
+                addPassLen(pswrd_len)
+
+                x = 0
+
+                while x < password_len:
+                    passwrd_char_type = random.randint(0, 3)
+
+                    if passwrd_char_type == 0:
+                        password.append(ltr_low[random.randint(0, ltr_low_len - 1)])
+
+                    elif passwrd_char_type == 1:
+                        password.append(ltr_up[random.randint(0, ltr_up_len - 1)])
+
+                    elif passwrd_char_type == 2:
+                        password.append(nums[random.randint(0, nums_len - 1)])
+
+                    elif passwrd_char_type == 3:
+                        password.append(sp_chars[random.randint(0, sp_chars_len - 1)])
+
+                    else:
+                        password.append("# ERROR #")
+                    x += 1
+
+                print(password)
+                passwrd_str = ''.join([str(s) for s in password])
+
+                pass_txt.insert(0, passwrd_str)
+
+                print(passwrd_str)
+
+            except (ValueError, RuntimeError, TypeError, NameError):
+                traceback.print_exc()
+                print(Exception)
+
+        else:
+            messagebox.showerror("Error", "Oops Something went wrong.... \n Please input a valid input and try again.")
+
+        '''
+
+        if check_Max_num(text2):
+            pass_txt.insert(0, "Pass: " + text2)
+        else:
+            pass_txt.insert(0, "Fail: " + text2)
+
+        # pass_txt.insert(0, text2)
+
+        '''
+
+        '''
+        if not check_Min_num(min_length) and not int(max_length):
             print("Min Value is: " + min_length + "please enter valid number")
             messagebox.showerror("Minimum Length: Invalid Input",
                                  "Please input a valid number in the minimum length field.")
@@ -214,6 +266,7 @@ def createGUI():
             except (ValueError, RuntimeError, TypeError, NameError):
                 traceback.print_exc()
                 print(Exception)
+            '''
 
     generate_btn = tkinter.Button(config_frame,
                                   width=15,
@@ -229,6 +282,7 @@ def createGUI():
     def clearParameters():
         min_txt.delete(0, END)
         max_txt.delete(0, END)
+        print("Min and Max parameters have been cleared")
 
     clear_btn = tkinter.Button(config_frame,
                                width=15,
@@ -247,6 +301,7 @@ def createGUI():
     def createLog():
         print("Print Log")
 
+    '''
     log_btn = tkinter.Button(bottom_frame,
                              command=createLog,
                              width=15,
@@ -257,7 +312,7 @@ def createGUI():
                              relief="raised",
                              font=("MS Sans Serif", 13))
     log_btn.grid(row=3, column=0, padx=5, pady=1, sticky=W)
-
+    '''
     pass_len_frame = tkinter.Frame(generator_frame)
     pass_len_frame.grid(row=0, column=0)
 
@@ -300,11 +355,11 @@ def createGUI():
     pass_txt.grid(row=0, column=0, padx=0, pady=1, sticky=W)
 
     def inputPassword(passwrd):
-        if passwrd.contains(""):
-            pass_txt.insert(str(passwrd))
+        if passwrd.contains(''):
+            namess = str(passwrd)
             return True
-        return False
-
+        else:
+            return False
 
     def resetPasswordSetting():
         print("Clear Password")
@@ -334,8 +389,3 @@ def createGUI():
     build_deets.grid(row=0, column=0, padx=0, pady=1, sticky=W)
 
     root.mainloop()
-
-
-
-
-
