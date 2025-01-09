@@ -14,5 +14,5 @@ Upcoming features:
 - Version 5 - Reminder to change passwords and not use old passwords
 - Version 5.1 - Make sure passwords are different and reminder to notify that same passwords for multiple apps and sites
 
-Past release:
+Past releases:
 - Version 1 - Contains the basic features of generating passwords in python terminal.
