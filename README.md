@@ -1,6 +1,6 @@
 # Random-Password-Generator
 
-A simple desktop password generator that will create passwords with characters betweem 8 to 15 characters. The passwords generated will contain numbers, special characters and both upper and lower case alphabet characters.
+A simple desktop password generator that will create passwords. The passwords generated will contain numbers, special characters and both upper and lower case alphabet characters.
 
 Current Release:
 - Version 2 - GUI interface will be introduced allowing users to create passwords and allow them to copy it onto clipboard
